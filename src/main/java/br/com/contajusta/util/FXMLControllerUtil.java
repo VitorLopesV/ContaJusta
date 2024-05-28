@@ -19,9 +19,9 @@ public class FXMLControllerUtil {
      * @param title título na nova interface.
      * @param button botão que será clicado.
      */
-    public void changeInterface(String path, String title, Button button){
+    public static void changeInterface(String path, String title, Button button){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            FXMLLoader loader = new FXMLLoader(FXMLControllerUtil.class.getResource(path));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -44,7 +44,7 @@ public class FXMLControllerUtil {
      * @param title título do popup.
      * @param messsage informação que vai ser passada.
      */
-    public void showInformation(Alert.AlertType type, String title, String messsage){
+    public static void showInformation(Alert.AlertType type, String title, String messsage){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(null);
