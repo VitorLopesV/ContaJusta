@@ -1,5 +1,6 @@
 package br.com.contajusta.controller;
 
+import br.com.contajusta.model.LittleCow;
 import br.com.contajusta.util.FXMLControllerUtil;
 import br.com.contajusta.util.AppConstants;
 import javafx.event.ActionEvent;
@@ -8,7 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class MainController extends FXMLControllerUtil {
+public class MainController extends LittleCow {
 
     @FXML
     private TextField accountValue;
@@ -35,13 +36,13 @@ public class MainController extends FXMLControllerUtil {
 
     @FXML
     void opensHistoryInterface(ActionEvent event) {
-        changeInterface(AppConstants.HISTORY_INTERFACE_PATH, AppConstants.HISTORY_INTERFACE_TITLE, historyButton);
+        FXMLControllerUtil.changeInterface(AppConstants.HISTORY_INTERFACE_PATH, AppConstants.HISTORY_INTERFACE_TITLE, historyButton);
     }
 
 
     @FXML
     void opensRussianRouletteInterface(ActionEvent event) {
-       changeInterface(AppConstants.RUSSIAN_ROULETTE_INTERFACE_PATH, AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE, russianRouletteButton);
+      FXMLControllerUtil.changeInterface(AppConstants.RUSSIAN_ROULETTE_INTERFACE_PATH, AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE, russianRouletteButton);
     }
 
     @FXML
@@ -56,7 +57,7 @@ public class MainController extends FXMLControllerUtil {
 
     @FXML
     void tellYouHowItWorks(ActionEvent event) {
-       showInformation(Alert.AlertType.INFORMATION, AppConstants.HOW_WORKS_TITLE, AppConstants.HOW_WORKS_FAIR_DIVISION);
+       FXMLControllerUtil.showInformation(Alert.AlertType.INFORMATION, AppConstants.HOW_WORKS_TITLE, AppConstants.HOW_WORKS_FAIR_DIVISION);
     }
 }
 

@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.contajusta.controller.MainController">
    <children>
-      <TextField fx:id="peaple" layoutX="392.0" layoutY="193.0" onAction="#setAmountOfPeople" prefHeight="33.0" prefWidth="246.0" promptText="0" />
+      <TextField fx:id="people" layoutX="392.0" layoutY="193.0" onAction="#setAmountOfPeople" prefHeight="33.0" prefWidth="246.0" promptText="0" />
       <TextField fx:id="accountValue" layoutX="392.0" layoutY="266.0" onAction="#setAccountValue" prefHeight="33.0" prefWidth="246.0" promptText="R$ 00,00" />
       <Button fx:id="fairSplitButton" layoutX="354.0" layoutY="327.0" mnemonicParsing="false" onAction="#divideEqually" prefHeight="38.0" prefWidth="130.0" text="Dividir Igualmente" />
       <Button fx:id="russianRouletteButton" layoutX="537.0" layoutY="327.0" mnemonicParsing="false" onAction="#opensRussianRouletteInterface" prefHeight="38.0" prefWidth="130.0" text="Roleta Russa" />
