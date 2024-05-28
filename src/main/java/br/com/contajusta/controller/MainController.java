@@ -23,7 +23,7 @@ public class MainController extends FXMLControllerUtil {
     private Button informationButton;
 
     @FXML
-    private TextField peaple;
+    private TextField people;
 
     @FXML
     private Button russianRouletteButton;

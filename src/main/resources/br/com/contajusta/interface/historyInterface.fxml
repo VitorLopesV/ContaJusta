@@ -12,7 +12,7 @@
         <columns>
           <TableColumn fx:id="mode" prefWidth="250.0" resizable="false" text="Modo" />
           <TableColumn fx:id="accountValue" minWidth="0.0" prefWidth="202.0" resizable="false" text="Valor da conta" />
-            <TableColumn fx:id="peaple" prefWidth="141.0" resizable="false" text="Q.Pessoas" />
+            <TableColumn fx:id="people" prefWidth="141.0" resizable="false" text="Q.Pessoas" />
             <TableColumn fx:id="amountPaid" prefWidth="269.0" resizable="false" text="Valor pago" />
             <TableColumn fx:id="data" prefWidth="166.0" resizable="false" text="Data" />
         </columns>

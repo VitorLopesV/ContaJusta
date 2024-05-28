@@ -28,7 +28,7 @@ public class HistoricController extends FXMLControllerUtil {
 
     /** Tabela com as quantidades de pessoas. */
     @FXML
-    private TableColumn<?, ?> peaple;
+    private TableColumn<?, ?> people;
 
     /** Botão de voltar. */
     @FXML
