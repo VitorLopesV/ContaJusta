@@ -1,15 +1,15 @@
 package br.com.contajusta.controller;
 
 import br.com.contajusta.model.LittleCow;
-import br.com.contajusta.util.FXMLControllerUtil;
 import br.com.contajusta.util.AppConstants;
+import br.com.contajusta.util.FXMLControllerUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class MainController extends LittleCow {
+public class MainController extends LittleCow{
 
     @FXML
     private TextField accountValue;
@@ -47,12 +47,32 @@ public class MainController extends LittleCow {
 
     @FXML
     void setAccountValue(ActionEvent event) {
+        try {
+            setAccountValue(Double.parseDouble(this.accountValue.getText()));
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Input");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid integer.");
+            alert.showAndWait();
 
+            this.people.clear();
+        }
     }
 
     @FXML
     void setAmountOfPeople(ActionEvent event) {
+        try {
+            setQuantityPeople(Integer.parseInt(this.people.getText()));
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Input");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid integer.");
+            alert.showAndWait();
 
+            this.people.clear();
+        }
     }
 
     @FXML
