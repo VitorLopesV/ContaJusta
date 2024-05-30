@@ -31,7 +31,17 @@ public class MainController extends LittleCow{
 
     @FXML
     void divideEqually(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(AppConstants.MAIN_INTERFACE_TITLE);
+        alert.setHeaderText(null);
+        alert.setContentText("O valor pago por cada um será: " + this.divide(getQuantityPeople(),getAccountValue()));
+        alert.show();
 
+    }
+
+    public double divide(int person, double value) {
+        double test = value/person;
+        return test;
     }
 
     @FXML
