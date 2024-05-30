@@ -9,22 +9,74 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.contajusta.controller.RussianRouletteController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="1092.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="1029.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="buttonBack" layoutX="14.0" layoutY="532.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="130.0" text="Voltar" />
-            <Text layoutX="433.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informe o nome dos participantes:" textAlignment="CENTER" wrappingWidth="240.796875">
+            <Button fx:id="buttonBack" layoutX="14.0" layoutY="534.0" mnemonicParsing="false" onAction="#backHome" prefHeight="36.0" prefWidth="104.0" text="Voltar">
                <font>
-                  <Font size="17.0" />
+                  <Font size="15.0" />
+               </font></Button>
+            <Text layoutX="359.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informe o nome dos participantes: " textAlignment="CENTER" wrappingWidth="309.796875">
+               <font>
+                  <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="participantName1" layoutX="610.0" layoutY="185.0" prefHeight="38.0" prefWidth="204.0" promptText="Digite um nome" />
-            <TextField fx:id="participantName2" layoutX="610.0" layoutY="273.0" prefHeight="38.0" prefWidth="204.0" promptText="Digite um nome" />
-            <TextField fx:id="participantName4" layoutX="276.0" layoutY="185.0" prefHeight="38.0" prefWidth="204.0" promptText="Digite um nome" />
-            <TextField fx:id="participantName3" layoutX="277.0" layoutY="273.0" prefHeight="38.0" prefWidth="204.0" promptText="Digite um nome" />
-            <TextField fx:id="participantName6" layoutX="610.0" layoutY="373.0" prefHeight="38.0" prefWidth="204.0" promptText="Digite um nome" />
-            <TextField fx:id="participantName5" layoutX="276.0" layoutY="373.0" prefHeight="38.0" prefWidth="204.0" promptText="Digite um nome" />
-            <Button fx:id="buttonLucky" layoutX="481.0" layoutY="448.0" mnemonicParsing="false" onAction="#luckyName" prefHeight="38.0" prefWidth="130.0" text="Sortear" />
-            <Button fx:id="buttonHelp" layoutX="889.0" layoutY="27.0" mnemonicParsing="false" onAction="#help" prefHeight="25.0" prefWidth="130.0" text="Como funciona?" />
+            <TextField fx:id="participantName1" layoutX="221.0" layoutY="150.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <TextField fx:id="participantName2" layoutX="558.0" layoutY="150.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="participantName3" layoutX="221.0" layoutY="210.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="participantName4" layoutX="558.0" layoutY="210.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="participantName5" layoutX="221.0" layoutY="273.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="participantName6" layoutX="558.0" layoutY="273.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="participantName7" layoutX="221.0" layoutY="336.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="participantName8" layoutX="558.0" layoutY="336.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="participantName9" layoutX="221.0" layoutY="395.0" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="participantName10" layoutX="558.0" layoutY="395.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Digite um nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Button fx:id="buttonLucky" layoutX="462.0" layoutY="484.0" mnemonicParsing="false" onAction="#luckyName" prefHeight="36.0" prefWidth="104.0" text="Sortear">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="buttonHelp" layoutX="880.0" layoutY="14.0" mnemonicParsing="false" onAction="#help" prefHeight="30.0" prefWidth="135.0" text="Como funciona?">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
          </children>
     </AnchorPane>
   </children>
