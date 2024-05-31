@@ -1,6 +1,6 @@
 package br.com.contajusta.util;
 
-/** Armazena as contantes da aplicação. */
+/** Armazena os contantes da aplicação. */
 public class AppConstants {
 
     /** Título da interface principal. */
@@ -14,6 +14,11 @@ public class AppConstants {
 
     /** Título do popup de como funciona. */
     public static final String HOW_WORKS_TITLE = "Como funciona?";
+
+
+    public static final String MESSAGE_ERROR = "ERRO";
+
+    public static final String INVALID_VALUE_MASSAGE = "O valor digitado é inválido";
 
     /** Menssagem de como funciona a divisão justa. */
     public static final String HOW_WORKS_FAIR_DIVISION = "Divisão justa consiste em pegar o valor total da conta e " +

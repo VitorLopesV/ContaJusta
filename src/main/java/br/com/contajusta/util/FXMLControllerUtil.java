@@ -1,16 +1,18 @@
 package br.com.contajusta.util;
 
+import br.com.contajusta.model.LittleCow;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 /** Classe auxiliar aos controladores. */
-public class FXMLControllerUtil {
+public class FXMLControllerUtil  extends LittleCow{
 
     /**
      * Faz a mudança de interface ao clicar em um botão.
@@ -50,5 +52,19 @@ public class FXMLControllerUtil {
         alert.setHeaderText(null);
         alert.setContentText(messsage);
         alert.show();
+    }
+
+    public static void setValueInTextField(TextField textField, String title, String msg){
+        try {
+            //(Double.parseDouble(textField.getText()));
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(msg);
+            alert.showAndWait();
+
+            textField.clear();
+        }
     }
 }

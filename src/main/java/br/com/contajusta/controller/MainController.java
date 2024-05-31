@@ -39,11 +39,6 @@ public class MainController extends LittleCow{
 
     }
 
-    public double divide(int person, double value) {
-        double test = value/person;
-        return test;
-    }
-
     @FXML
     void opensHistoryInterface(ActionEvent event) {
         FXMLControllerUtil.changeInterface(AppConstants.HISTORY_INTERFACE_PATH, AppConstants.HISTORY_INTERFACE_TITLE, historyButton);
@@ -88,6 +83,10 @@ public class MainController extends LittleCow{
     @FXML
     void tellYouHowItWorks(ActionEvent event) {
        FXMLControllerUtil.showInformation(Alert.AlertType.INFORMATION, AppConstants.HOW_WORKS_TITLE, AppConstants.HOW_WORKS_FAIR_DIVISION);
+    }
+
+    public double divide(int person, double value) {
+        return value/person;
     }
 }
 
