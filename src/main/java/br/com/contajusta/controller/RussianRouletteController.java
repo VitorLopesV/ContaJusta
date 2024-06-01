@@ -1,5 +1,6 @@
 package br.com.contajusta.controller;
 
+import br.com.contajusta.model.LittleCow;
 import br.com.contajusta.util.AppConstants;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RussianRouletteController extends FXMLControllerUtil {
+public class RussianRouletteController extends LittleCow {
 
     @FXML
     private Button buttonBack;
@@ -56,7 +57,7 @@ public class RussianRouletteController extends FXMLControllerUtil {
 
     @FXML
     void backHome(ActionEvent event) {
-        changeInterface(AppConstants.MAIN_INTERFACE_PATH, AppConstants.MAIN_INTERFACE_TITLE, buttonBack);
+        FXMLControllerUtil.changeInterface(AppConstants.MAIN_INTERFACE_PATH, AppConstants.MAIN_INTERFACE_TITLE, buttonBack);
     }
 
     @FXML
@@ -64,14 +65,14 @@ public class RussianRouletteController extends FXMLControllerUtil {
         Alert helpAlert = new Alert(Alert.AlertType.INFORMATION);
         helpAlert.setTitle("Como funciona a Roleta Russa?");
         helpAlert.setHeaderText(null);
-        helpAlert.setContentText("Os participantes colocam seus nomes nos campos vazios, haverá um sorteio e um deles "+
-                "será premiado e terá que pagar a conta sozinho. Mínimo de 1 participante e máximo de 10.   Deixe os campos que não for utilizar em branco.");
-        helpAlert.showAndWait();    }
+        helpAlert.setContentText(AppConstants.HOW_WORKS_RUSSIAN_ROULETTE);
+        helpAlert.showAndWait();
+    }
 
     @FXML
     void luckyName(ActionEvent event) {
         List<String> participantsNames = new ArrayList<>();
-        // VERIFICA SE OS NOMES ESTÃO NA LISTA E ADICIONA NA LISTA
+        // VERIFICA SE OS NOMES ESTÃO O NA LISTA E ADICIONA.
         if (!participantName1.getText().isEmpty())
         {
             participantsNames.add(participantName1.getText());
@@ -112,11 +113,12 @@ public class RussianRouletteController extends FXMLControllerUtil {
         {
             participantsNames.add(participantName10.getText());
         }
-        // VERIFICA SE OS CAMPOS ESTÃO PREENCHIDOS
-        if (!participantsNames.isEmpty())
+
+        // VERIFICA SE HÁ PELO MENOS 2 CAMPOS PREENCHIDOS E SORTEIA
+        if (participantsNames.size() >= 2)
         {
-            Random sorteio = new Random();
-            int winName = sorteio.nextInt(participantsNames.size());
+            Random prizeDrawnRandom = new Random();
+            int winName = prizeDrawnRandom.nextInt(participantsNames.size());
 
             Alert winAlert = new Alert(Alert.AlertType.INFORMATION);
             winAlert.setTitle("Sorteio");
@@ -129,7 +131,7 @@ public class RussianRouletteController extends FXMLControllerUtil {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setTitle("Erro");
             errorAlert.setHeaderText(null);
-            errorAlert.setContentText("Você deve preencher um dos campos antes de sortear.");
+            errorAlert.setContentText("Você  deve preencher pelo menos dois nomes antes de sortear.");
             errorAlert.showAndWait();
         }
     }
