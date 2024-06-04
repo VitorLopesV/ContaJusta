@@ -8,13 +8,13 @@
 
 <VBox prefHeight="584.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.contajusta.controller.HistoricController">
   <children>
-      <TableView onSort="#getElements" prefHeight="545.0" prefWidth="1029.0">
+      <TableView fx:id="billTable" prefHeight="545.0" prefWidth="1029.0">
         <columns>
           <TableColumn fx:id="mode" prefWidth="250.0" resizable="false" text="Modo" />
           <TableColumn fx:id="accountValue" minWidth="0.0" prefWidth="202.0" resizable="false" text="Valor da conta" />
-            <TableColumn fx:id="peaple" prefWidth="141.0" resizable="false" text="Q.Pessoas" />
+            <TableColumn fx:id="people" prefWidth="141.0" resizable="false" text="Q.Pessoas" />
             <TableColumn fx:id="amountPaid" prefWidth="269.0" resizable="false" text="Valor pago" />
-            <TableColumn fx:id="data" prefWidth="166.0" resizable="false" text="Data" />
+            <TableColumn fx:id="date" prefWidth="166.0" resizable="false" text="Data" />
         </columns>
          <VBox.margin>
             <Insets />

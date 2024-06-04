@@ -1,14 +1,31 @@
 package br.com.contajusta.model;
 
-import javax.xml.crypto.Data;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
-public class LittleCow {
+public class SplitBillInfo {
 
+    private static SplitBillInfo splitBillInfo;
     private String mode;
     private Double accountValue;
     private Integer quantityPeople;
     private Double paidValue;
-    private Data data;
+    private LocalDate date;
+
+    private SplitBillInfo(){
+    }
+
+    public static SplitBillInfo getInstance(){
+        if(splitBillInfo==null){
+            splitBillInfo = new SplitBillInfo();
+        }
+        return splitBillInfo;
+    }
+
+    public Double divide(Double accountValue, Integer quantityPeople){
+       this.paidValue = accountValue/quantityPeople;
+        return this.paidValue;
+    }
 
     public String getMode() {
         return mode;
@@ -42,11 +59,11 @@ public class LittleCow {
         this.paidValue = paidValue;
     }
 
-    public Data getData() {
-        return data;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }
