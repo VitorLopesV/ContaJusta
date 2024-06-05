@@ -1,7 +1,7 @@
 package br.com.contajusta.controller;
 
+import br.com.contajusta.RegisterManager;
 import br.com.contajusta.model.SplitBillInfo;
-import br.com.contajusta.model.SplitBillInfoAux;
 import br.com.contajusta.util.AppConstants;
 import br.com.contajusta.util.FXMLControllerUtil;
 import javafx.event.ActionEvent;
@@ -18,37 +18,37 @@ import java.util.Date;
 public class HistoricController extends FXMLControllerUtil {
 
     @FXML
-    private TableView<SplitBillInfoAux> billTable;
+    private TableView<SplitBillInfo> billTable;
 
     /**
      * Tabela com valores das contas.
      */
     @FXML
-    private TableColumn<SplitBillInfoAux, Double> accountValue;
+    private TableColumn<SplitBillInfo, Double> accountValue;
 
     /**
      * Tabela com valores a serem pagos.
      */
     @FXML
-    private TableColumn<SplitBillInfoAux, Double> amountPaid;
+    private TableColumn<SplitBillInfo, Double> amountPaid;
 
     /**
      * Tabela com as datas das divisões.
      */
     @FXML
-    private TableColumn<SplitBillInfoAux, Date> date;
+    private TableColumn<SplitBillInfo, Date> date;
 
     /**
      * Tabela com o modo de divisão.
      */
     @FXML
-    private TableColumn<SplitBillInfoAux, String> mode;
+    private TableColumn<SplitBillInfo, String> mode;
 
     /**
      * Tabela com as quantidades de pessoas.
      */
     @FXML
-    private TableColumn<SplitBillInfoAux, Integer> people;
+    private TableColumn<SplitBillInfo, Integer> people;
 
     /**
      * Botão de voltar.
@@ -56,8 +56,8 @@ public class HistoricController extends FXMLControllerUtil {
     @FXML
     private Button backButton;
 
-    ArrayList<SplitBillInfoAux> dataList = new ArrayList<>();
-    SplitBillInfo splitBillInfo = SplitBillInfo.getInstance();
+    ArrayList<SplitBillInfo> dataList = new ArrayList<>();
+    RegisterManager registerManager = RegisterManager.getInstance();
 
     /**
      * Retorna para a classe principal.
@@ -78,8 +78,6 @@ public class HistoricController extends FXMLControllerUtil {
         amountPaid.setCellValueFactory(new PropertyValueFactory<>("paidValue"));
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        dataList.add(new SplitBillInfoAux(splitBillInfo.getMode(),splitBillInfo.getAccountValue(),splitBillInfo.getQuantityPeople(),splitBillInfo.getPaidValue(),splitBillInfo.getDate()));
-
-        billTable.getItems().setAll(dataList);
+        billTable.getItems().setAll(registerManager.getRegisters());
     }
 }

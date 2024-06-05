@@ -1,5 +1,6 @@
 package br.com.contajusta.controller;
 
+import br.com.contajusta.RegisterManager;
 import br.com.contajusta.model.SplitBillInfo;
 import br.com.contajusta.util.AppConstants;
 import br.com.contajusta.util.FXMLControllerUtil;
@@ -31,6 +32,8 @@ public class MainController {
     @FXML
     private Button russianRouletteButton;
 
+    RegisterManager registerManager = RegisterManager.getInstance();
+    
     /**
      * Divite o valor de forma igualitária
      *
@@ -38,22 +41,25 @@ public class MainController {
      */
     @FXML
     void divideEqually(ActionEvent event) {
-        SplitBillInfo splitBillInfo = SplitBillInfo.getInstance();
+        SplitBillInfo fairDivision = new SplitBillInfo();
         try {
-            splitBillInfo.setAccountValue(Double.parseDouble(this.accountValue.getText()));
-            splitBillInfo.setQuantityPeople(Integer.parseInt(this.people.getText()));
+            fairDivision.setAccountValue(Double.parseDouble(this.accountValue.getText()));
+            fairDivision.setQuantityPeople(Integer.parseInt(this.people.getText()));
         } catch (NumberFormatException e) {
-            FXMLControllerUtil.showInformation(Alert.AlertType.ERROR, AppConstants.ERROR_MESSAGE, AppConstants.INVALID_VALUE_MASSAGE);
-            splitBillInfo.setAccountValue(null);
+            FXMLControllerUtil.showInformation(Alert.AlertType.ERROR, AppConstants.ERROR_MESSAGE,
+                    AppConstants.INVALID_VALUE_MASSAGE);
             this.accountValue.clear();
-            splitBillInfo.setQuantityPeople(null);
             this.people.clear();
         }
-        String msg = AppConstants.PAID_VALUE_MESSAGE + splitBillInfo.divide(splitBillInfo.getAccountValue(), splitBillInfo.getQuantityPeople());
+        String msg = AppConstants.PAID_VALUE_MESSAGE + fairDivision.divide(fairDivision.getAccountValue(),
+                fairDivision.getQuantityPeople());
         FXMLControllerUtil.showInformation(Alert.AlertType.INFORMATION, AppConstants.MAIN_INTERFACE_TITLE, msg);
 
-        splitBillInfo.setMode(AppConstants.MAIN_INTERFACE_TITLE);
-        splitBillInfo.setDate(LocalDate.now());
+        fairDivision.setMode(AppConstants.MAIN_INTERFACE_TITLE);
+        fairDivision.setDate(LocalDate.now());
+
+        registerManager.setRegisters(new SplitBillInfo(fairDivision.getMode(), fairDivision.getAccountValue(),
+                fairDivision.getQuantityPeople(), fairDivision.getPaidValue(), fairDivision.getDate()));
     }
 
     /**
@@ -63,7 +69,8 @@ public class MainController {
      */
     @FXML
     void opensHistoryInterface(ActionEvent event) {
-        FXMLControllerUtil.changeInterface(AppConstants.HISTORY_INTERFACE_PATH, AppConstants.HISTORY_INTERFACE_TITLE, historyButton);
+        FXMLControllerUtil.changeInterface(AppConstants.HISTORY_INTERFACE_PATH, AppConstants.HISTORY_INTERFACE_TITLE,
+                historyButton);
     }
 
     /**
@@ -73,7 +80,16 @@ public class MainController {
      */
     @FXML
     void opensRussianRouletteInterface(ActionEvent event) {
-        FXMLControllerUtil.changeInterface(AppConstants.RUSSIAN_ROULETTE_INTERFACE_PATH, AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE, russianRouletteButton);
+        SplitBillInfo russianRoulette = new SplitBillInfo();
+        russianRoulette.setAccountValue(Double.parseDouble(this.accountValue.getText()));
+        russianRoulette.setMode(AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE);
+        russianRoulette.setDate(LocalDate.now());
+
+        registerManager.setRegisters(new SplitBillInfo(russianRoulette.getMode(),russianRoulette.getAccountValue(),0,
+                russianRoulette.getAccountValue(),russianRoulette.getDate()));
+
+        FXMLControllerUtil.changeInterface(AppConstants.RUSSIAN_ROULETTE_INTERFACE_PATH,
+                AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE, russianRouletteButton);
     }
 
     /**
@@ -83,7 +99,8 @@ public class MainController {
      */
     @FXML
     void tellYouHowItWorks(ActionEvent event) {
-        FXMLControllerUtil.showInformation(Alert.AlertType.INFORMATION, AppConstants.HOW_WORKS_TITLE, AppConstants.HOW_WORKS_FAIR_DIVISION);
+        FXMLControllerUtil.showInformation(Alert.AlertType.INFORMATION, AppConstants.HOW_WORKS_TITLE,
+                AppConstants.HOW_WORKS_FAIR_DIVISION);
     }
 }
 

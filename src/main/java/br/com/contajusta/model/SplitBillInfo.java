@@ -1,30 +1,45 @@
 package br.com.contajusta.model;
 
+import br.com.contajusta.RegisterManager;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class SplitBillInfo {
 
-    private static SplitBillInfo splitBillInfo;
+    RegisterManager registerManager = RegisterManager.getInstance();
+
     private String mode;
+
     private Double accountValue;
+
     private Integer quantityPeople;
+
     private Double paidValue;
+
     private LocalDate date;
 
-    private SplitBillInfo(){
+    public SplitBillInfo(){
     }
 
-    public static SplitBillInfo getInstance(){
-        if(splitBillInfo==null){
-            splitBillInfo = new SplitBillInfo();
-        }
-        return splitBillInfo;
+    public SplitBillInfo(String mode, double accountValue, int quantityPeople, double paidValue, LocalDate date) {
+        this.mode = mode;
+        this.accountValue = accountValue;
+        this.quantityPeople = quantityPeople;
+        this.paidValue = paidValue;
+        this.date = date;
     }
 
     public Double divide(Double accountValue, Integer quantityPeople){
-       this.paidValue = accountValue/quantityPeople;
+        this.paidValue = accountValue/quantityPeople;
         return this.paidValue;
+    }
+
+    public RegisterManager getRegisterManager() {
+        return registerManager;
+    }
+
+    public void setRegisterManager(RegisterManager registerManager) {
+        this.registerManager = registerManager;
     }
 
     public String getMode() {
