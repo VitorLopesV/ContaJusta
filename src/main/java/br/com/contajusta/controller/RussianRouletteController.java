@@ -10,11 +10,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/** Controller de Roleta russa. */
 public class RussianRouletteController extends FXMLControllerUtil {
 
     @FXML
@@ -58,17 +58,32 @@ public class RussianRouletteController extends FXMLControllerUtil {
 
     List<String> participantsNames = new ArrayList<>();
 
+    /**
+     * Botão para voltar para a tela inicial.
+     *
+     * @param event Clique no botão.
+     */
     @FXML
     void backHome(ActionEvent event) {
         changeInterface(AppConstants.MAIN_INTERFACE_PATH, AppConstants.MAIN_INTERFACE_TITLE, buttonBack);
     }
 
+    /**
+     * Botão que informa como funciona o modo roleta russa.
+     *
+     * @param event Clique no botão.
+     */
     @FXML
     void help(ActionEvent event) {
         FXMLControllerUtil.showInformation(Alert.AlertType.INFORMATION, AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE,
                 AppConstants.HOW_WORKS_RUSSIAN_ROULETTE);
     }
 
+    /**
+     * Botão que inicia o sorteio.
+     *
+     * @param event Clique no botão.
+     */
     @FXML
     void luckyName(ActionEvent event) {
         SplitBillInfo splitBillInfo = new SplitBillInfo();
@@ -83,7 +98,7 @@ public class RussianRouletteController extends FXMLControllerUtil {
             splitBillInfo.setQuantityPeople(participantsNames.size());
 
             for (int i = 0; i < registerManager.getRegisters().size(); i++) {
-                if (registerManager.getRegisters().get(i).getQuantityPeople()==0) {
+                if (registerManager.getRegisters().get(i).getQuantityPeople() == 0) {
                     registerManager.getRegisters().get(i).setQuantityPeople(splitBillInfo.getQuantityPeople());
                 }
             }
@@ -95,7 +110,7 @@ public class RussianRouletteController extends FXMLControllerUtil {
     }
 
     /**
-     * Adiona os participantes que irão participar do sorteio.
+     * Adiona os utilizadores que irão participar do sorteio.
      */
     public void addParticipants() {
         TextField[] participants = {participantName1, participantName2, participantName3, participantName4,

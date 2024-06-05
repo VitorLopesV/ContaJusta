@@ -9,9 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Classe auxiliar aos controladores.
- */
+/** Classe auxiliar aos controladores. */
 public abstract class FXMLControllerUtil {
 
     /**

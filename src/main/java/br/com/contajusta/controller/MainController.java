@@ -33,7 +33,7 @@ public class MainController {
     private Button russianRouletteButton;
 
     RegisterManager registerManager = RegisterManager.getInstance();
-    
+
     /**
      * Divite o valor de forma igualitária
      *
@@ -85,8 +85,8 @@ public class MainController {
         russianRoulette.setMode(AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE);
         russianRoulette.setDate(LocalDate.now());
 
-        registerManager.setRegisters(new SplitBillInfo(russianRoulette.getMode(),russianRoulette.getAccountValue(),0,
-                russianRoulette.getAccountValue(),russianRoulette.getDate()));
+        registerManager.setRegisters(new SplitBillInfo(russianRoulette.getMode(), russianRoulette.getAccountValue(), 0,
+                russianRoulette.getAccountValue(), russianRoulette.getDate()));
 
         FXMLControllerUtil.changeInterface(AppConstants.RUSSIAN_ROULETTE_INTERFACE_PATH,
                 AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE, russianRouletteButton);

@@ -20,43 +20,26 @@ public class HistoricController extends FXMLControllerUtil {
     @FXML
     private TableView<SplitBillInfo> billTable;
 
-    /**
-     * Tabela com valores das contas.
-     */
     @FXML
     private TableColumn<SplitBillInfo, Double> accountValue;
 
-    /**
-     * Tabela com valores a serem pagos.
-     */
     @FXML
     private TableColumn<SplitBillInfo, Double> amountPaid;
 
-    /**
-     * Tabela com as datas das divisões.
-     */
     @FXML
     private TableColumn<SplitBillInfo, Date> date;
 
-    /**
-     * Tabela com o modo de divisão.
-     */
     @FXML
     private TableColumn<SplitBillInfo, String> mode;
 
-    /**
-     * Tabela com as quantidades de pessoas.
-     */
     @FXML
     private TableColumn<SplitBillInfo, Integer> people;
 
-    /**
-     * Botão de voltar.
-     */
     @FXML
     private Button backButton;
 
     ArrayList<SplitBillInfo> dataList = new ArrayList<>();
+
     RegisterManager registerManager = RegisterManager.getInstance();
 
     /**
@@ -69,6 +52,9 @@ public class HistoricController extends FXMLControllerUtil {
         changeInterface(AppConstants.MAIN_INTERFACE_PATH, AppConstants.MAIN_INTERFACE_TITLE, backButton);
     }
 
+    /**
+     * Compo onde os registros do sistema são inseridos.
+     */
     @FXML
     public void initialize() {
 
