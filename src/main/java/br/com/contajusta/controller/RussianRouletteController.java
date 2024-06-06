@@ -58,6 +58,10 @@ public class RussianRouletteController extends FXMLControllerUtil {
 
     List<String> participantsNames = new ArrayList<>();
 
+    TextField[] participants = {participantName1, participantName2, participantName3, participantName4,
+            participantName5, participantName6, participantName7, participantName8, participantName9,
+            participantName10};
+
     /**
      * Botão para voltar para a tela inicial.
      *
@@ -88,7 +92,9 @@ public class RussianRouletteController extends FXMLControllerUtil {
     void luckyName(ActionEvent event) {
         SplitBillInfo splitBillInfo = new SplitBillInfo();
         RegisterManager registerManager = RegisterManager.getInstance();
+
         this.addParticipants();
+
         if (participantsNames.size() >= 2) {
             Random prizeDrawRandom = new Random();
             int winName = prizeDrawRandom.nextInt(participantsNames.size());
@@ -102,24 +108,31 @@ public class RussianRouletteController extends FXMLControllerUtil {
                     registerManager.getRegisters().get(i).setQuantityPeople(splitBillInfo.getQuantityPeople());
                 }
             }
+            this.clearList();
         } else {
             FXMLControllerUtil.showInformation(Alert.AlertType.WARNING, AppConstants.WARNING_MESSAGE,
                     AppConstants.INSUFFICIENT_NUMBER_OF_PARTICIPANTS);
         }
-
     }
 
     /**
      * Adiona os utilizadores que irão participar do sorteio.
      */
     public void addParticipants() {
-        TextField[] participants = {participantName1, participantName2, participantName3, participantName4,
-                participantName5, participantName6, participantName7, participantName8, participantName9,
-                participantName10};
-
         for (TextField participant : participants) {
             if (!participant.getText().isEmpty()) {
                 participantsNames.add(participant.getText());
+            }
+        }
+    }
+
+    /**
+     * Remove todos dos participantes para um novo sorteio.
+     */
+    public void clearList() {
+        for (TextField participant : participants) {
+            if (!participant.getText().isEmpty()) {
+                participantsNames.remove(participant.getText());
             }
         }
     }
