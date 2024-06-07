@@ -30,6 +30,9 @@ public class AppConstants {
     /** Mensagem de valor inválido. */
     public static final String INVALID_VALUE_MASSAGE = "O valor digitado é inválido";
 
+    /** Mensagem informando que o valor da conta não foi inserido. */
+    public static final String MESSAGE_VALUE_NOT_ENTERED = "O valor da conta não foi inserido.";
+
     /** Mensagem de número insuficientes de pessoas. */
         public static final String INSUFFICIENT_NUMBER_OF_PARTICIPANTS = "Você deve preencher pelo menos dois nomes antes de sortear.";
 

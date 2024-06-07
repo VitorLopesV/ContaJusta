@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Random;
 
 /** Controller de Roleta russa. */
-public class RussianRouletteController extends FXMLControllerUtil {
+public class RussianRouletteController extends SplitBillInfo {
 
     @FXML
     private Button buttonBack;
@@ -56,11 +56,9 @@ public class RussianRouletteController extends FXMLControllerUtil {
     @FXML
     private TextField participantName10;
 
-    List<String> participantsNames = new ArrayList<>();
+    RegisterManager registerManager = RegisterManager.getInstance();
 
-    TextField[] participants = {participantName1, participantName2, participantName3, participantName4,
-            participantName5, participantName6, participantName7, participantName8, participantName9,
-            participantName10};
+    List<String> participantsNames = new ArrayList<>();
 
     /**
      * Botão para voltar para a tela inicial.
@@ -69,7 +67,14 @@ public class RussianRouletteController extends FXMLControllerUtil {
      */
     @FXML
     void backHome(ActionEvent event) {
-        changeInterface(AppConstants.MAIN_INTERFACE_PATH, AppConstants.MAIN_INTERFACE_TITLE, buttonBack);
+        for (int i = 0; i < registerManager.getRegisters().size(); i++) {
+            if (registerManager.getRegisters().get(i).getQuantityPeople() == 0 && registerManager.getRegisters().get(i)
+                    .getMode().equals(AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE)) {
+                registerManager.getRegisters().remove(i);
+            }
+        }
+        FXMLControllerUtil.changeInterface(AppConstants.MAIN_INTERFACE_PATH, AppConstants.MAIN_INTERFACE_TITLE,
+                buttonBack);
     }
 
     /**
@@ -90,9 +95,6 @@ public class RussianRouletteController extends FXMLControllerUtil {
      */
     @FXML
     void luckyName(ActionEvent event) {
-        SplitBillInfo splitBillInfo = new SplitBillInfo();
-        RegisterManager registerManager = RegisterManager.getInstance();
-
         this.addParticipants();
 
         if (participantsNames.size() >= 2) {
@@ -101,11 +103,11 @@ public class RussianRouletteController extends FXMLControllerUtil {
             FXMLControllerUtil.showInformation(Alert.AlertType.INFORMATION, AppConstants.GIVEAWAY_MESSAGE,
                     AppConstants.MESSAGE_FROM_THE_WINNING_PARTICIPANT + participantsNames.get(winName).toUpperCase());
 
-            splitBillInfo.setQuantityPeople(participantsNames.size());
+            setQuantityPeople(participantsNames.size());
 
             for (int i = 0; i < registerManager.getRegisters().size(); i++) {
                 if (registerManager.getRegisters().get(i).getQuantityPeople() == 0) {
-                    registerManager.getRegisters().get(i).setQuantityPeople(splitBillInfo.getQuantityPeople());
+                    registerManager.getRegisters().get(i).setQuantityPeople(getQuantityPeople());
                 }
             }
             this.clearList();
@@ -119,6 +121,10 @@ public class RussianRouletteController extends FXMLControllerUtil {
      * Adiona os utilizadores que irão participar do sorteio.
      */
     public void addParticipants() {
+        TextField[] participants = {participantName1, participantName2, participantName3, participantName4,
+                participantName5, participantName6, participantName7, participantName8, participantName9,
+                participantName10};
+
         for (TextField participant : participants) {
             if (!participant.getText().isEmpty()) {
                 participantsNames.add(participant.getText());
@@ -130,6 +136,10 @@ public class RussianRouletteController extends FXMLControllerUtil {
      * Remove todos dos participantes para um novo sorteio.
      */
     public void clearList() {
+        TextField[] participants = {participantName1, participantName2, participantName3, participantName4,
+                participantName5, participantName6, participantName7, participantName8, participantName9,
+                participantName10};
+
         for (TextField participant : participants) {
             if (!participant.getText().isEmpty()) {
                 participantsNames.remove(participant.getText());

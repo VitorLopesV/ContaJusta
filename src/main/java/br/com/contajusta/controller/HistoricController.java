@@ -11,11 +11,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /** Controlador da ‘interface’ de histórico. */
-public class HistoricController extends FXMLControllerUtil {
+public class HistoricController extends SplitBillInfo {
 
     @FXML
     private TableView<SplitBillInfo> billTable;
@@ -38,8 +37,6 @@ public class HistoricController extends FXMLControllerUtil {
     @FXML
     private Button backButton;
 
-    ArrayList<SplitBillInfo> dataList = new ArrayList<>();
-
     RegisterManager registerManager = RegisterManager.getInstance();
 
     /**
@@ -49,7 +46,8 @@ public class HistoricController extends FXMLControllerUtil {
      */
     @FXML
     void back(ActionEvent event) {
-        changeInterface(AppConstants.MAIN_INTERFACE_PATH, AppConstants.MAIN_INTERFACE_TITLE, backButton);
+        FXMLControllerUtil.changeInterface(AppConstants.MAIN_INTERFACE_PATH, AppConstants.MAIN_INTERFACE_TITLE,
+                backButton);
     }
 
     /**
@@ -57,7 +55,6 @@ public class HistoricController extends FXMLControllerUtil {
      */
     @FXML
     public void initialize() {
-
         mode.setCellValueFactory(new PropertyValueFactory<>("mode"));
         accountValue.setCellValueFactory(new PropertyValueFactory<>("accountValue"));
         people.setCellValueFactory(new PropertyValueFactory<>("quantityPeople"));
