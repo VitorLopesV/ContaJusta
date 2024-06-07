@@ -10,6 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class MainController extends SplitBillInfo {
@@ -32,7 +34,7 @@ public class MainController extends SplitBillInfo {
     @FXML
     private Button russianRouletteButton;
 
-    RegisterManager registerManager = RegisterManager.getInstance();
+    public final RegisterManager registerManager = RegisterManager.getInstance();
 
     /**
      * Divite o valor de forma igualitária
@@ -45,8 +47,13 @@ public class MainController extends SplitBillInfo {
             setAccountValue(Double.parseDouble(this.accountValue.getText()));
             setQuantityPeople(Integer.parseInt(this.people.getText()));
 
-            String msg = AppConstants.PAID_VALUE_MESSAGE + divide(getAccountValue(), getQuantityPeople());
-            FXMLControllerUtil.showInformation(Alert.AlertType.INFORMATION, AppConstants.MAIN_INTERFACE_TITLE, msg);
+            BigDecimal bigDecimal = BigDecimal.valueOf(divide(getAccountValue(), getQuantityPeople())).setScale(2,
+                    RoundingMode.HALF_UP);
+
+            setPaidValue(bigDecimal.doubleValue());
+
+            FXMLControllerUtil.showInformation(Alert.AlertType.INFORMATION, AppConstants.MAIN_INTERFACE_TITLE,
+                    AppConstants.PAID_VALUE_MESSAGE + getPaidValue());
         } catch (NumberFormatException e) {
             FXMLControllerUtil.showInformation(Alert.AlertType.ERROR, AppConstants.ERROR_MESSAGE,
                     AppConstants.INVALID_VALUE_MASSAGE);
@@ -56,7 +63,7 @@ public class MainController extends SplitBillInfo {
         setMode(AppConstants.MAIN_INTERFACE_TITLE);
         setDate(LocalDate.now());
 
-        registerManager.setRegisters(
+        this.registerManager.setRegisters(
                 new SplitBillInfo(getMode(), getAccountValue(), getQuantityPeople(), getPaidValue(), getDate()));
     }
 
@@ -68,7 +75,7 @@ public class MainController extends SplitBillInfo {
     @FXML
     void opensHistoryInterface(ActionEvent event) {
         FXMLControllerUtil.changeInterface(AppConstants.HISTORY_INTERFACE_PATH, AppConstants.HISTORY_INTERFACE_TITLE,
-                historyButton);
+                this.historyButton);
     }
 
     /**
@@ -83,11 +90,11 @@ public class MainController extends SplitBillInfo {
             setMode(AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE);
             setDate(LocalDate.now());
 
-            registerManager.setRegisters(
+            this.registerManager.setRegisters(
                     new SplitBillInfo(getMode(), getAccountValue(), 0, getAccountValue(), getDate()));
 
             FXMLControllerUtil.changeInterface(AppConstants.RUSSIAN_ROULETTE_INTERFACE_PATH,
-                    AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE, russianRouletteButton);
+                    AppConstants.RUSSIAN_ROULETTE_INTERFACE_TITLE, this.russianRouletteButton);
         } else {
             FXMLControllerUtil.showInformation(Alert.AlertType.ERROR, AppConstants.ERROR_MESSAGE,
                     AppConstants.MESSAGE_VALUE_NOT_ENTERED);
